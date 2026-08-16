@@ -1,0 +1,148 @@
+@import '@fontsource-variable/manrope';
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+/*
+  Дизайн-система «сухая строганая продукция».
+  Направление: тёплый молочный фон, хвойный зелёный, натуральный древесный акцент.
+  Контраст всех текстовых пар проверен на соответствие WCAG AA (>= 4.5:1).
+*/
+@theme {
+  /* Поверхности */
+  --color-cream: #faf6ef; /* основной фон */
+  --color-sand: #f2ede4; /* вторичная поверхность */
+  --color-card: #ffffff;
+  --color-line: #e4dcce; /* границы */
+  --color-line-soft: #efe8dc;
+
+  /* Текст */
+  --color-ink: #17231d; /* заголовки, основной текст */
+  --color-ink-soft: #55635b; /* вторичный текст, 5.6:1 на cream */
+
+  /* Хвойный зелёный — фирменный цвет и CTA */
+  --color-forest: #1c3b2e;
+  --color-forest-deep: #132a20;
+  --color-forest-hover: #24503d;
+
+  /* Натуральная древесина — акцент */
+  --color-wood: #c08a4e; /* декоративные линии, чертежи */
+  --color-wood-ink: #8a5a22; /* древесный акцент в тексте на светлом, 5.3:1 */
+  --color-wood-light: #d9a76c; /* акцентный текст на тёмном, 5.3:1 */
+
+  /* Служебные */
+  --color-danger: #a3271b;
+  --color-danger-soft: #fdf1ef;
+
+  --font-display: 'Manrope Variable', 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Отступ, чтобы якорь не уезжал под фиксированную шапку. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    /* Страховка от горизонтального скролла на узких экранах. */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-forest);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* На тёмно-зелёном фоне зелёный контур не виден — переключаем на древесный. */
+  .on-dark :focus-visible {
+    outline-color: var(--color-wood-light);
+  }
+
+  ::selection {
+    background: var(--color-forest);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Тонкая «техническая» сетка — фирменный приём, отсылка к чертежу. */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-wood) 14%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-wood) 14%, transparent) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+}
+
+/* Плавное появление секций при прокрутке. */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

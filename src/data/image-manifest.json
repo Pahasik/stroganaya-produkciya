@@ -1,0 +1,61 @@
+{
+  "hero-stack": {
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "aspectRatio": 0.8056,
+    "lqip": "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAQBQCdASoUABkAPu1ur1IppiQiqAgBMB2JYwCdMtpA6N1Xq/4Q+EHqgku9q3Hhl4oAAP7rlfWvMQeWD6DdHlmauNm665bUjnKZaqKVq0+VXH8Gi59KhFJVKGDRqSbe5B8Vdux8uiGotW8TKfmwC6rU3xE3BqXQ9qxUdx6PcjPDL1VBBQ5s+LmxXU5Jc4GjhAHnoO9yBuYqVtIJBEynijRz6zs4CYWdg68Ss3h0nMtt1DOo7k0VpPG8mncqAkn/rjWowAAA"
+  },
+  "imitation-brusa": {
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwBACdASoUAA8APu1iqU2ppaQiMAgBMB2JQBOmUI8DBTLT1DbwU6Zc6oAA/ugWQnWm+3UtScbGRYvxiZjgyB+Km20v70fak6crjTfJMeT/Lu6knScyygdWzZLP7dXQzgAAAA=="
+  },
+  "planken": {
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQAwCdASoUAA8APu1iqU2ppaQiMAgBMB2JYgCdIFzCbvoh9qQyOU4A/utassKZw6WvBY2R2lkwwlakQMCniLK8V3jSZf0NT09U7c3xsKVIZLCEnzhqp0aqtFbVFXki/DlNFEojC6xedY9QnIid98Dj3ALtYUPpJTfRiWkFs/9P2U7rQsZYQAAA"
+  },
+  "packs": {
+    "widths": [
+      640,
+      960
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JQBOmUGUgCcWnsfzWugdZw/HPOQAA9jv+mRKpMMmbw6fEFloFg1L1F52NyIykG3CAATndKGBqHVh0AUmPxwwCnm5qO3lC+ZtLe9qkzRd0CUte6viIJSK/FVUuMipdpWj6WYAA"
+  },
+  "production": {
+    "widths": [
+      640,
+      960
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwCzkf/gITxpJAyWmUZXSAD8/3weyQr9KNFRrYGmcyLie6gjV0dbAQt3/+Uvfbj5ZtW3B5J9ETFdrDhNKe39hsoLnYPj4dUuXV/h9l9FJKDHOyPorsxJ1j3elnrScJ+QjKfYERm8BURKeH38KYI7k38jh0kgAAA="
+  },
+  "loading": {
+    "widths": [
+      640,
+      960
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JZQCdMoADxY9l9NTxTW++QUJ2pgAA/PLwqiS9wWGYgqQU191CvJpjRnHL9lQtP9mV13R/ElkL2ROfJtLzu5djPO8ptJX2R1Rw+BGZR6uTW7Fhug1OQGIkpM6VJFhxc9sCfvpduUaRBMDLvsL78EWLCwix1DAA"
+  },
+  "texture": {
+    "widths": [
+      640,
+      1280
+    ],
+    "aspectRatio": 1.4906,
+    "lqip": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAAAQAwCdASoUAA0APu1iqk2/paQiMAgD8B2JQAAPSu8aLzAA/uxmxiZeiJ/ScQFYF7bLRS/nooAh+5gAAAA="
+  }
+}

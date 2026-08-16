@@ -1,0 +1,33 @@
+# Зависимости и сборка
+node_modules
+dist
+dist-ssr
+
+# Переменные окружения (в т. ч. VITE_LEAD_ENDPOINT)
+.env
+.env.*
+!.env.example
+*.local
+
+# Логи
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Исходные PNG для изображений (~62 МБ).
+# В репозиторий не попадают: сайт использует готовые WebP из public/images.
+# Нужны только для повторного запуска `npm run images`.
+raw-images
+
+# Редакторы и ОС
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
