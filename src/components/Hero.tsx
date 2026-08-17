@@ -1,11 +1,14 @@
-import { keyFacts } from '../data/content'
+import { heroConditions } from '../data/content'
 import { Picture } from './ui/Picture'
-import { IconArrowDown, IconArrowRight } from './ui/icons'
+import { IconArrowDown, IconArrowRight, IconCheck } from './ui/icons'
 import { btnPrimary, btnSecondary } from '../lib/styles'
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 pb-16 md:pt-32 lg:pt-36 lg:pb-24">
+    <section
+      id="top"
+      className="relative overflow-hidden pt-28 pb-16 md:pt-32 lg:pt-40 lg:pb-24"
+    >
       {/* Техническая сетка — сдержанный фирменный фон первого экрана */}
       <div
         aria-hidden="true"
@@ -19,13 +22,33 @@ export function Hero() {
               Производство · оптовые поставки
             </p>
 
-            <h1 className="mt-6 text-[clamp(2rem,5.4vw,3.6rem)]">
-              Клеёная имитация бруса и планкен оптом от производителя
+            <h1 className="mt-6 text-[clamp(1.9rem,4.4vw,3rem)]">
+              Имитация бруса и планкен оптом — стабильная геометрия в каждой партии
             </h1>
 
             <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed text-ink-soft md:text-[1.15rem]">
-              Стабильная геометрия, удобный монтаж и комплектация партии под требования вашего
-              объекта.
+              Ровная плоскость, точная кромка и комплектация партии под требования вашего объекта.
+            </p>
+
+            {/* Ключевые условия сразу под подзаголовком — цена видна без прокрутки */}
+            <ul className="mt-6 flex flex-wrap gap-x-2.5 gap-y-2">
+              {heroConditions.map((item, i) => (
+                <li
+                  key={item}
+                  className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[0.88rem] font-semibold ${
+                    i === 0
+                      ? 'border-forest bg-forest text-white'
+                      : 'border-line bg-card text-ink'
+                  }`}
+                >
+                  {i !== 0 && <IconCheck className="h-4 w-4 shrink-0 text-wood-ink" />}
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-3 text-[0.82rem] text-ink-soft">
+              Сорт АБ, цена 2026 года. Калиброванная и другая строганая продукция — по запросу.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -38,7 +61,6 @@ export function Hero() {
                 <IconArrowDown className="h-5 w-5" />
               </a>
             </div>
-
           </div>
 
           <div className="relative">
@@ -51,22 +73,8 @@ export function Hero() {
                 className="block h-full w-full object-cover"
               />
             </div>
-
-            <p className="mt-3 text-[0.78rem] text-ink-soft/80">Изображение для демонстрации</p>
           </div>
         </div>
-
-        {/* Ключевые условия — на всю ширину, чтобы значения не переносились */}
-        <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-7 border-t border-line pt-8 md:grid-cols-4 lg:mt-16">
-          {keyFacts.map((fact) => (
-            <div key={fact.label}>
-              <dt className="font-display text-[1.15rem] font-extrabold leading-tight text-forest lg:text-[1.35rem]">
-                {fact.value}
-              </dt>
-              <dd className="mt-2 text-[0.88rem] leading-snug text-ink-soft">{fact.label}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   )

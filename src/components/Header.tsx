@@ -1,33 +1,8 @@
 import { useEffect, useState } from 'react'
-import { company, navItems } from '../data/content'
-import { IconClose, IconMenu } from './ui/icons'
+import { company, contacts, navItems } from '../data/content'
+import { IconClose, IconMail, IconMenu, IconPhone } from './ui/icons'
+import { Wordmark } from './ui/Logo'
 import { btnPrimary } from '../lib/styles'
-
-/** Небольшой знак — сечение доски, тот же приём, что и в чертежах продукции. */
-function Wordmark() {
-  return (
-    <a
-      href="#top"
-      className="flex items-center gap-3 rounded-md py-1 pr-2 text-left"
-      aria-label={`${company.wordmark} — на главную`}
-    >
-      <svg viewBox="0 0 28 28" className="h-8 w-8 shrink-0" aria-hidden="true" focusable="false">
-        <rect x="1" y="1" width="26" height="26" rx="5" fill="var(--color-forest)" />
-        <g stroke="var(--color-wood-light)" strokeWidth="1.7" strokeLinecap="round">
-          <path d="M6 10h16M6 14h16M6 18h16" />
-        </g>
-      </svg>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-[1.05rem] font-extrabold tracking-tight text-ink">
-          {company.wordmark}
-        </span>
-        <span className="mt-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-ink-soft">
-          {company.wordmarkNote}
-        </span>
-      </span>
-    </a>
-  )
-}
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -57,14 +32,41 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled || open
-          ? 'border-line bg-cream/95 backdrop-blur-sm'
-          : 'border-transparent bg-cream/80'
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled || open ? 'bg-cream/95 backdrop-blur-sm' : 'bg-cream/80'
       }`}
     >
-      <div className="shell flex h-20 items-center justify-between gap-4">
-        <Wordmark />
+      {/* Верхняя полоса с контактами — телефон и почта видны сразу */}
+      <div className="hidden border-b border-line-soft bg-sand/70 lg:block">
+        <div className="shell flex h-10 items-center justify-between gap-6 text-[0.85rem]">
+          <p className="text-ink-soft">{company.slogan}</p>
+          <div className="flex items-center gap-6">
+          <a
+            href={contacts.phoneHref}
+            className="inline-flex items-center gap-2 font-semibold text-ink transition-colors duration-200 hover:text-forest"
+          >
+            <IconPhone className="h-4 w-4 text-wood-ink" />
+            {contacts.phone}
+          </a>
+          <a
+            href={contacts.emailHref}
+            className="inline-flex items-center gap-2 text-ink-soft transition-colors duration-200 hover:text-forest"
+          >
+            <IconMail className="h-4 w-4 text-wood-ink" />
+            {contacts.email}
+          </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`shell flex h-20 items-center justify-between gap-4 border-b transition-colors duration-300 ${
+          scrolled || open ? 'border-line' : 'border-transparent'
+        }`}
+      >
+        <a href="#top" className="rounded-md py-1" aria-label={`${company.name} — на главную`}>
+          <Wordmark withSlogan={false} />
+        </a>
 
         <nav aria-label="Основная навигация" className="hidden lg:block">
           <ul className="flex items-center gap-1">
@@ -72,7 +74,7 @@ export function Header() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className="inline-flex min-h-11 items-center rounded-md px-3 text-[0.95rem] font-medium text-ink-soft transition-colors duration-200 hover:text-forest"
+                  className="inline-flex min-h-11 items-center whitespace-nowrap rounded-md px-3 text-[0.95rem] font-medium text-ink-soft transition-colors duration-200 hover:text-forest"
                 >
                   {item.label}
                 </a>
@@ -82,10 +84,18 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* На узких экранах вместо длинной кнопки — быстрый звонок */}
+          <a
+            href={contacts.phoneHref}
+            aria-label={`Позвонить: ${contacts.phone}`}
+            className="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-line bg-card text-forest transition-colors duration-200 hover:border-forest/40 md:hidden"
+          >
+            <IconPhone className="h-5 w-5" />
+          </a>
+
           {/*
             `max-md:hidden`, а не `hidden md:inline-flex`: базовый класс кнопки уже содержит
             `inline-flex`, и в порядке утилит Tailwind он перебивает безусловный `hidden`.
-            Вариант с медиазапросом выигрывает гарантированно.
           */}
           <a href="#order" className={`${btnPrimary} max-md:hidden`}>
             Получить оптовое предложение
@@ -104,7 +114,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Мобильная навигация */}
       {/* Панель занимает оставшуюся высоту экрана, чтобы содержимое страницы не просвечивало. */}
       <div
         id="mobile-nav"
@@ -125,13 +134,27 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <a
-            href="#order"
-            onClick={() => setOpen(false)}
-            className={`${btnPrimary} mt-5 w-full`}
-          >
+
+          <a href="#order" onClick={() => setOpen(false)} className={`${btnPrimary} mt-5 w-full`}>
             Получить оптовое предложение
           </a>
+
+          <div className="mt-6 flex flex-col gap-1 border-t border-line pt-5">
+            <a
+              href={contacts.phoneHref}
+              className="inline-flex min-h-12 items-center gap-3 font-display text-[1.1rem] font-bold text-ink"
+            >
+              <IconPhone className="h-5 w-5 text-wood-ink" />
+              {contacts.phone}
+            </a>
+            <a
+              href={contacts.emailHref}
+              className="inline-flex min-h-12 items-center gap-3 text-[0.98rem] text-ink-soft"
+            >
+              <IconMail className="h-5 w-5 text-wood-ink" />
+              {contacts.email}
+            </a>
+          </div>
         </nav>
       </div>
     </header>

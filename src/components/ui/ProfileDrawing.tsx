@@ -2,8 +2,8 @@ import type { ProfileKind } from '../../data/content'
 
 type ProfileDrawingProps = {
   kind: ProfileKind
-  /** Показывать размерные линии 135 × 20 мм. Для продукции «по запросу» — выключено. */
-  showDimensions?: boolean
+  /** Подписи размеров. Не передаются — размерные линии не рисуются (сечение «по запросу»). */
+  dimensions?: { thickness: string; width: string }
   className?: string
 }
 
@@ -31,11 +31,10 @@ const IMITATION_PATH = [
   'Z',
 ].join(' ')
 
-export function ProfileDrawing({
-  kind,
-  showDimensions = true,
-  className = '',
-}: ProfileDrawingProps) {
+export function ProfileDrawing({ kind, dimensions, className = '' }: ProfileDrawingProps) {
+  const showDimensions = Boolean(dimensions)
+  const size = dimensions ? `, ${dimensions.thickness} на ${dimensions.width}` : ''
+
   return (
     <svg
       viewBox="0 0 330 104"
@@ -43,9 +42,9 @@ export function ProfileDrawing({
       role="img"
       aria-label={
         kind === 'imitation'
-          ? 'Схема сечения имитации бруса: паз, шип и фаска по лицевой кромке, 20 на 135 мм'
+          ? `Схема сечения имитации бруса: паз, шип и фаска по лицевой кромке${size}`
           : kind === 'planken'
-            ? 'Схема сечения планкена: плоская доска со скруглёнными кромками, 20 на 135 мм'
+            ? `Схема сечения планкена: плоская доска со скруглёнными кромками${size}`
             : 'Схема сечения строганой доски'
       }
     >
@@ -112,10 +111,10 @@ export function ProfileDrawing({
           aria-hidden="true"
         >
           <text x="0" y="0" transform="translate(11 44) rotate(-90)" textAnchor="middle">
-            20 мм
+            {dimensions?.thickness}
           </text>
           <text x="164" y="78" textAnchor="middle">
-            135 мм
+            {dimensions?.width}
           </text>
         </g>
       )}

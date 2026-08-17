@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { company } from '../data/content'
+import { company, contacts } from '../data/content'
 import { IconClose } from './ui/icons'
 
 type PrivacyDialogProps = {
@@ -77,8 +77,10 @@ export function PrivacyDialog({ open, onClose }: PrivacyDialogProps) {
 
         <h3 className="mt-5 text-[1.02rem] text-ink">4. Передача данных третьим лицам</h3>
         <p className="mt-2">
-          Данные не передаются третьим лицам, за исключением случаев, прямо предусмотренных
-          законодательством Российской Федерации.
+          Данные из формы передаются по защищённому соединению сервису доставки сообщений
+          FormSubmit, который пересылает их на электронную почту компании. Иным третьим лицам данные
+          не передаются, за исключением случаев, прямо предусмотренных законодательством Российской
+          Федерации.
         </p>
 
         <h3 className="mt-5 text-[1.02rem] text-ink">5. Отзыв согласия</h3>
@@ -89,11 +91,14 @@ export function PrivacyDialog({ open, onClose }: PrivacyDialogProps) {
 
         <h3 className="mt-5 text-[1.02rem] text-ink">6. Реквизиты</h3>
         <p className="mt-2">
-          {company.activity}. Адрес производства: {company.addressFull}.
+          {company.name}. {company.activity}. Адрес производства: {company.addressFull}.
         </p>
         <p className="mt-2">
-          {/* TODO(владелец сайта): добавить наименование организации, ИНН/ОГРН и контакты оператора данных. */}
-          Наименование организации, регистрационные данные и контакты оператора персональных данных
+          Телефон: {contacts.phone}. Электронная почта: {contacts.email}.
+        </p>
+        <p className="mt-2">
+          {/* TODO(владелец сайта): добавить полное юридическое наименование, ИНН и ОГРН. */}
+          Полное юридическое наименование и регистрационные данные оператора персональных данных
           указываются владельцем сайта перед публикацией.
         </p>
       </div>

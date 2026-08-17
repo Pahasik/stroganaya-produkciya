@@ -8,52 +8,69 @@ export type Lead = {
 }
 
 export type SubmitResult =
-  /** Заявка действительно отправлена настроенному обработчику. */
+  /** Заявка принята обработчиком. */
   | { status: 'sent' }
-  /** Обработчик не подключён — данные никуда не отправлялись. */
+  /** Обработчик не настроен — данные никуда не отправлялись. */
   | { status: 'demo' }
 
 /* ------------------------------------------------------------------ */
-/*  ТОЧКА ПОДКЛЮЧЕНИЯ РЕАЛЬНОГО ОБРАБОТЧИКА ЗАЯВОК                     */
+/*  КУДА УХОДЯТ ЗАЯВКИ                                                 */
 /* ------------------------------------------------------------------ */
 /**
- * TODO(владелец сайта): укажите адрес обработчика заявок в переменной
- * окружения `VITE_LEAD_ENDPOINT` (файл `.env.local`), например:
+ * По умолчанию заявки уходят письмом на почту компании через FormSubmit.
  *
- *   VITE_LEAD_ENDPOINT=https://ваш-домен.ру/api/lead
+ * ВАЖНО, разовая активация: после первой отправки формы с боевого домена
+ * FormSubmit пришлёт на sudik-les@mail.ru письмо со ссылкой активации.
+ * Пока по ней не перешли, письма с заявками не доставляются.
  *
- * Обработчик должен принимать POST с JSON-телом вида `Lead` и отвечать
- * кодом 2xx при успешной обработке. До тех пор форма работает в
- * демонстрационном режиме: проверка полей и все состояния интерфейса
- * работают, но данные НЕ отправляются на несуществующий сервер.
+ * Как заменить сервис (своя серверная функция, CRM, Telegram-бот через
+ * прокси): задайте VITE_LEAD_ENDPOINT в файле .env.local — он имеет
+ * приоритет над значением по умолчанию. Обработчик должен принимать POST
+ * с JSON-телом `Lead` и отвечать кодом 2xx.
  *
- * Если вместо собственного бэкенда используется внешний сервис (CRM,
- * почтовый шлюз, форма Яндекс/Тильда и т. п.) — замените тело функции
- * `sendToEndpoint` соответствующим вызовом.
+ * Токены и ключи сюда класть нельзя: код фронтенда публичный.
  */
-const ENDPOINT = import.meta.env.VITE_LEAD_ENDPOINT
+const FORMSUBMIT_EMAIL = 'sudik-les@mail.ru'
 
-async function sendToEndpoint(endpoint: string, lead: Lead): Promise<void> {
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(lead),
-  })
+/** Эндпоинт для fetch: возвращает JSON вместо редиректа. */
+const AJAX_ENDPOINT = `https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`
 
-  if (!response.ok) {
-    throw new Error(`Обработчик заявок ответил кодом ${response.status}`)
+/** Эндпоинт для обычной отправки формы, если JavaScript не сработал. */
+export const NOSCRIPT_ENDPOINT = `https://formsubmit.co/${FORMSUBMIT_EMAIL}`
+
+const ENDPOINT = import.meta.env.VITE_LEAD_ENDPOINT || AJAX_ENDPOINT
+
+/** Служебные поля FormSubmit: тема письма, вид письма и отключение капчи. */
+function buildPayload(lead: Lead) {
+  return {
+    Имя: lead.name,
+    Телефон: lead.phone,
+    Компания: lead.company || '—',
+    Продукция: lead.product || '—',
+    'Объём, м³': lead.volume || '—',
+    Комментарий: lead.comment || '—',
+    _subject: `Заявка с сайта: ${lead.name}, ${lead.phone}`,
+    _template: 'table',
+    _captcha: 'false',
   }
 }
 
 export async function submitLead(lead: Lead): Promise<SubmitResult> {
   if (!ENDPOINT) {
-    // Демонстрационный режим: имитируем только задержку интерфейса,
-    // сетевого запроса не происходит.
-    await new Promise((resolve) => setTimeout(resolve, 700))
+    await new Promise((resolve) => setTimeout(resolve, 500))
     return { status: 'demo' }
   }
 
-  await sendToEndpoint(ENDPOINT, lead)
+  const response = await fetch(ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(buildPayload(lead)),
+  })
+
+  if (!response.ok) {
+    throw new Error(`Сервис приёма заявок ответил кодом ${response.status}.`)
+  }
+
   return { status: 'sent' }
 }
 
@@ -66,7 +83,7 @@ export function formatPhone(input: string): string {
   let digits = input.replace(/\D/g, '')
   if (!digits) return ''
 
-  // 8XXXXXXXXXX и XXXXXXXXXX приводим к 7XXXXXXXXXX
+  // 8XXXXXXXXXX и 9XXXXXXXXX приводим к 7XXXXXXXXXX
   if (digits[0] === '8' || digits[0] === '9') {
     digits = digits[0] === '8' ? `7${digits.slice(1)}` : `7${digits}`
   } else if (digits[0] !== '7') {

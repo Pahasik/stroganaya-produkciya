@@ -14,8 +14,7 @@ export function Gallery() {
               <h2 className={`${sectionTitle} mt-4 max-w-xl`}>Продукция и производство</h2>
             </div>
             <p className="max-w-sm text-[0.9rem] leading-relaxed text-ink-soft">
-              Изображения показывают тип продукции и характер производственного процесса. Это не
-              документальные снимки конкретной партии.
+              От строгальной линии и замера сечения до упаковки, склада и отгрузки партии.
             </p>
           </div>
         </Reveal>
@@ -32,11 +31,8 @@ export function Gallery() {
                     className="aspect-[4/3] w-full object-cover"
                   />
                 </div>
-                <figcaption className="mt-3">
-                  <span className="block text-[0.95rem] font-medium text-ink">{item.caption}</span>
-                  <span className="mt-0.5 block text-[0.75rem] text-ink-soft/80">
-                    Изображение для демонстрации
-                  </span>
+                <figcaption className="mt-3 text-[0.95rem] font-medium text-ink">
+                  {item.caption}
                 </figcaption>
               </figure>
             </Reveal>

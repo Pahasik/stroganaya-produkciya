@@ -1,4 +1,5 @@
 import { company, contacts, mapUrl, navItems } from '../data/content'
+import { LogoMark } from './ui/Logo'
 import { IconMail, IconMapPin, IconPhone } from './ui/icons'
 
 type FooterProps = {
@@ -9,16 +10,23 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="on-dark border-t border-forest-deep bg-forest-deep text-white/75">
+    // pb-28 на мобильных — чтобы закреплённая панель не перекрывала содержимое
+    <footer className="on-dark border-t border-forest-deep bg-forest-deep pb-28 text-white/75 md:pb-0">
       <div className="shell py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <p className="font-display text-[1.15rem] font-extrabold text-white">
-              {company.wordmark}
+            <div className="flex items-center gap-3">
+              <LogoMark className="h-10 w-10 shrink-0" />
+              <p className="font-display text-[1.15rem] font-extrabold text-white">
+                {company.name}
+              </p>
+            </div>
+            <p className="mt-4 max-w-sm text-[0.98rem] leading-relaxed text-wood-light">
+              {company.slogan}
             </p>
-            <p className="mt-3 max-w-sm text-[0.95rem] leading-relaxed">{company.activity}</p>
-            <p className="mt-4 text-[0.95rem] leading-relaxed text-wood-light">
-              Клеёная имитация бруса и клеёный планкен 20 × 135 мм — от 34 000 ₽/м³, партия от 10 м³.
+            <p className="mt-4 max-w-sm text-[0.95rem] leading-relaxed">{company.activity}</p>
+            <p className="mt-3 text-[0.95rem] leading-relaxed">
+              Имитация бруса и планкен, сорт АБ — 34 000 ₽/м³, партия от 10 м³.
             </p>
           </div>
 
@@ -54,6 +62,38 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
             </h2>
             <ul className="mt-4 space-y-4 text-[0.95rem]">
               <li className="flex items-start gap-3">
+                <IconPhone className="mt-3 h-5 w-5 shrink-0 text-wood-light" />
+                <span>
+                  <a
+                    href={contacts.phoneHref}
+                    className="inline-flex min-h-11 items-center font-display text-[1.1rem] font-bold text-white hover:text-wood-light"
+                  >
+                    {contacts.phone}
+                  </a>
+                  <span className="block text-[0.85rem] text-white/60">
+                    Также{' '}
+                    <a
+                      href={contacts.telegram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-wood-light underline underline-offset-2 hover:text-white"
+                    >
+                      Telegram
+                    </a>{' '}
+                    и MAX
+                  </span>
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <IconMail className="h-5 w-5 shrink-0 text-wood-light" />
+                <a
+                  href={contacts.emailHref}
+                  className="inline-flex min-h-11 items-center hover:text-white"
+                >
+                  {contacts.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
                 <IconMapPin className="mt-0.5 h-5 w-5 shrink-0 text-wood-light" />
                 <address className="not-italic leading-relaxed">
                   {company.addressFull}
@@ -68,22 +108,13 @@ export function Footer({ onOpenPrivacy }: FooterProps) {
                   </a>
                 </address>
               </li>
-              {/* TODO(владелец сайта): заменить телефон и почту на реальные и сделать их ссылками tel:/mailto:. */}
-              <li className="flex items-center gap-3">
-                <IconPhone className="h-5 w-5 shrink-0 text-wood-light" />
-                <span>{contacts.phone}</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <IconMail className="h-5 w-5 shrink-0 text-wood-light" />
-                <span>{contacts.email}</span>
-              </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-white/15 pt-7 text-[0.85rem] md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} · {company.activity}
+            © {year} · {company.name} · {company.activity}
           </p>
           <button
             type="button"

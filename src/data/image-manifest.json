@@ -24,7 +24,16 @@
       1280
     ],
     "aspectRatio": 1.3393,
-    "lqip": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQAwCdASoUAA8APu1iqU2ppaQiMAgBMB2JYgCdIFzCbvoh9qQyOU4A/utassKZw6WvBY2R2lkwwlakQMCniLK8V3jSZf0NT09U7c3xsKVIZLCEnzhqp0aqtFbVFXki/DlNFEojC6xedY9QnIid98Dj3ALtYUPpJTfRiWkFs/9P2U7rQsZYQAAA"
+    "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JQBOl4AA9+Zxgwws8axb8oAD+1+ldXD85jIuKHlNcS4tiZ5ed6399cEiVfZGfNVq8koCGjxNXsjaktu0LXsxufTn6ndSLcAtaedVqgAAAAA=="
+  },
+  "equipment": {
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JZQC7AB2VFQYvgEpoU8KAAP7PXrb0Wr6/o8wBpBIJbO3Jp0dfbHvOoCexub7Od3FkpJM1MoNaZWCuXuT68cA6LfI9k2CmnsEzlFALV3XUPsbHM1I+eF27FkQUwz6JNQVarQH9L+G50vr2Fj42zQqj1FSicugA"
   },
   "packs": {
     "widths": [
@@ -32,15 +41,39 @@
       960
     ],
     "aspectRatio": 1.3393,
-    "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JQBOmUGUgCcWnsfzWugdZw/HPOQAA9jv+mRKpMMmbw6fEFloFg1L1F52NyIykG3CAATndKGBqHVh0AUmPxwwCnm5qO3lC+ZtLe9qkzRd0CUte6viIJSK/FVUuMipdpWj6WYAA"
+    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADQAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JZQC06B0ingW9pfjX0AAA/t/ywDjCRz+lMLL49/WRmxWXfC9lBpI+pjJTvkRebENKoa+hFjR+uxKyox8MTclBe7anxxBrboQlTKHlhaXvFweVFE/AAA=="
   },
-  "production": {
+  "workshop": {
     "widths": [
       640,
       960
     ],
     "aspectRatio": 1.3393,
-    "lqip": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwCzkf/gITxpJAyWmUZXSAD8/3weyQr9KNFRrYGmcyLie6gjV0dbAQt3/+Uvfbj5ZtW3B5J9ETFdrDhNKe39hsoLnYPj4dUuXV/h9l9FJKDHOyPorsxJ1j3elnrScJ+QjKfYERm8BURKeH38KYI7k38jh0kgAAA="
+    "lqip": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAABwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwC7AdwLgsZSOfUZrEiMeSyhgAD+6dh4LGYqk+DTG2Ek5LF5dee3R6BZzSVC7a+d39ewFIkXOPm9pH8en7vegNSpWXMY3Zp2dXg4b2XJbvJ6OKbfrwQI7yzDSqckoWy3BthCy0ZTKdb9WixGcnR7KDxLOmEJkbC1/7TgAAA="
+  },
+  "measuring": {
+    "widths": [
+      640,
+      960
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JQBYdg222IPUq1bnyL91AAP6q5sxP4b3KBQj+xs6zAhjMT+AJqcJggFLg5QBfiQRGlZtS7dOVYetWdb8M8S9LESUH8ovpAheBwx2/1Hp5DFLMaBbH25aX1fPMKRcCL7XcctsPuxj+LFL190wVC0O9838yFia6NLDV6QOJIAA="
+  },
+  "packaging": {
+    "widths": [
+      640,
+      960
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAAAwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYwCdMoCGAZ4mSG6x0WD/CgAA/Pv1+E30p24a2mPgFU89+2g3OrwO72eS/UvVwSxx9klwy11lLLdXSFEB8AxFPkmzCXC0/vL3N5+Md7mlB1g3IIadgmh9kkmC17kHq6LWZR0hXq9pfbkznX+oNQtp4CJ+2NrlZQt+mVoPS9nuxnJYI7OM6hoA"
+  },
+  "warehouse": {
+    "widths": [
+      640,
+      960
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JQBOmUABsqW6pAB6gV4VvTVtAAP68Cf7n4PjUKeairVWu5mGLHl0o9OtlJYe7zFAdHvQiRI+ucP2debpfGvaRmk/DLdXA9Ow7UAtqy/gU2KJNefPk4OYzfCjNu5qFAUs2hxI4HzZ+AA=="
   },
   "loading": {
     "widths": [
@@ -48,7 +81,15 @@
       960
     ],
     "aspectRatio": 1.3393,
-    "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JZQCdMoADxY9l9NTxTW++QUJ2pgAA/PLwqiS9wWGYgqQU191CvJpjRnHL9lQtP9mV13R/ElkL2ROfJtLzu5djPO8ptJX2R1Rw+BGZR6uTW7Fhug1OQGIkpM6VJFhxc9sCfvpduUaRBMDLvsL78EWLCwix1DAA"
+    "lqip": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JYgCw7B6PubTyd5FxgZtL8QAA/sUao5cDVcRc6p1Y//o9hYAKBoR7k1bakcvvceLd7HShK7W6U+gZmCajxzgCZBsuidGBni1S+QfiTNmZnHl3GuYTl7Q/InXht0f/nPUr5HOU8alhVHwJJwlTa80QAAA="
+  },
+  "transport": {
+    "widths": [
+      640,
+      960
+    ],
+    "aspectRatio": 1.3393,
+    "lqip": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JZQC7ACG4TJABenLyJeICAAD+7VHPbRtic2JuGj/S80Oz5Bqxc+lxfY/Psj1i0/SiErtWshIsliianHUu7RRjSfwHD2Yca4+0EPhr6J6S7R/SUr19g1fKpSPAJvYvkMrwYhmMt0AAAA=="
   },
   "texture": {
     "widths": [

@@ -45,6 +45,13 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  /* На широких экранах у шапки появляется полоса с контактами — она выше. */
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 8rem;
+    }
+  }
+
   body {
     margin: 0;
     background-color: var(--color-cream);

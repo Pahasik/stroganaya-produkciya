@@ -44,8 +44,9 @@ export function Products({ onRequest }: ProductsProps) {
             Что мы производим и отгружаем оптом
           </h2>
           <p className="mt-4 max-w-2xl text-[1.02rem] text-ink-soft">
-            Основное направление — клеёная имитация бруса и клеёный планкен в сечении 20 × 135 мм.
-            Дополнительно изготавливаем калиброванную и другую строганую продукцию.
+            Основное направление — клеёная имитация бруса и клеёный планкен, сорт АБ по цене
+            34 000 ₽/м³. Дополнительно изготавливаем калиброванную и другую строганую продукцию в
+            нескольких сечениях.
           </p>
         </Reveal>
 
@@ -75,7 +76,11 @@ export function Products({ onRequest }: ProductsProps) {
 
                   {/* Чертёж сечения — тот же приём, что и на всём сайте */}
                   <div className="rounded-xl border border-line-soft bg-cream px-4 py-3">
-                    <ProfileDrawing kind={product.profile} className="h-auto w-full" />
+                    <ProfileDrawing
+                      kind={product.profile}
+                      dimensions={product.drawing}
+                      className="h-auto w-full"
+                    />
                   </div>
 
                   <Specs product={product} />
@@ -102,7 +107,7 @@ export function Products({ onRequest }: ProductsProps) {
             <article className="mt-6 grid overflow-hidden rounded-2xl border border-line bg-card md:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)]">
               <div className="relative aspect-[4/3] bg-sand md:aspect-auto md:min-h-full">
                 <Picture
-                  name={product.image as 'production'}
+                  name={product.image as 'equipment'}
                   alt={product.imageAlt}
                   sizes="(max-width: 767px) 100vw, 40vw"
                   className="absolute inset-0 h-full w-full object-cover"

@@ -10,6 +10,7 @@ import { Delivery } from './components/Delivery'
 import { Faq } from './components/Faq'
 import { LeadForm } from './components/LeadForm'
 import { Footer } from './components/Footer'
+import { MobileCta } from './components/MobileCta'
 import { PrivacyDialog } from './components/PrivacyDialog'
 
 export default function App() {
@@ -44,6 +45,8 @@ export default function App() {
       </main>
 
       <Footer onOpenPrivacy={() => setPrivacyOpen(true)} />
+
+      <MobileCta />
 
       <PrivacyDialog open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </>

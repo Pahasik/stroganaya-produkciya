@@ -69,19 +69,14 @@ export function Delivery() {
           </Reveal>
 
           <Reveal delay={100}>
-            <figure>
-              <div className="overflow-hidden rounded-2xl border border-line bg-cream">
-                <Picture
-                  name="loading"
-                  alt="Обвязанная пачка строганой продукции, загруженная на платформу грузового автомобиля"
-                  sizes="(max-width: 1023px) 100vw, 46vw"
-                  className="aspect-[4/3] w-full object-cover"
-                />
-              </div>
-              <figcaption className="mt-3 text-[0.78rem] text-ink-soft/80">
-                Изображение для демонстрации
-              </figcaption>
-            </figure>
+            <div className="overflow-hidden rounded-2xl border border-line bg-cream">
+              <Picture
+                name="transport"
+                alt="Загруженный тентованный полуприцеп с пачками строганой продукции готов к отправке"
+                sizes="(max-width: 1023px) 100vw, 46vw"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
           </Reveal>
         </div>
       </div>

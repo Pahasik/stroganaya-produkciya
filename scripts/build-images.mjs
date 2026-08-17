@@ -19,10 +19,15 @@ const OUT = path.join(root, 'public', 'images')
 const SOURCES = [
   { file: '01-hero.png', name: 'hero-stack', widths: [640, 960, 1280] },
   { file: '02-imitation.png', name: 'imitation-brusa', widths: [640, 960, 1280] },
-  { file: '03-planken.png', name: 'planken', widths: [640, 960, 1280] },
-  { file: '04-packs.png', name: 'packs', widths: [640, 960] },
-  { file: '05-production.png', name: 'production', widths: [640, 960] },
-  { file: '06-loading.png', name: 'loading', widths: [640, 960] },
+  { file: '14-planken.png', name: 'planken', widths: [640, 960, 1280] },
+  { file: '12-equipment.png', name: 'equipment', widths: [640, 960, 1280] },
+  { file: '13-packs-branded.png', name: 'packs', widths: [640, 960] },
+  { file: '11-workshop.png', name: 'workshop', widths: [640, 960] },
+  { file: '15-measuring.png', name: 'measuring', widths: [640, 960] },
+  { file: '16-packaging.png', name: 'packaging', widths: [640, 960] },
+  { file: '18-warehouse.png', name: 'warehouse', widths: [640, 960] },
+  { file: '17-loading.png', name: 'loading', widths: [640, 960] },
+  { file: '19-transport.png', name: 'transport', widths: [640, 960] },
   { file: '07-texture.png', name: 'texture', widths: [640, 1280] },
 ]
 
