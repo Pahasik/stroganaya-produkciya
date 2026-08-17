@@ -71,6 +71,30 @@ export async function submitLead(lead: Lead): Promise<SubmitResult> {
     throw new Error(`Сервис приёма заявок ответил кодом ${response.status}.`)
   }
 
+  /*
+    ВАЖНО: FormSubmit отвечает кодом 200 даже тогда, когда письмо НЕ отправлено —
+    например, пока форма не активирована по ссылке из письма. Проверять только
+    response.ok нельзя: посетитель увидит «Заявка отправлена», а заявка потеряется.
+    Поэтому разбираем тело ответа и считаем успехом только success: "true".
+  */
+  const data: unknown = await response.json().catch(() => null)
+  const success =
+    data && typeof data === 'object' && 'success' in data
+      ? String((data as { success: unknown }).success)
+      : null
+
+  if (success !== null && success !== 'true') {
+    const detail =
+      data && typeof data === 'object' && 'message' in data
+        ? String((data as { message: unknown }).message)
+        : 'неизвестная причина'
+
+    // Техническая причина — в консоль для владельца сайта, посетителю её не показываем.
+    console.error('[Заявка не доставлена] Ответ сервиса:', detail)
+
+    throw new Error('Не удалось передать заявку менеджеру.')
+  }
+
   return { status: 'sent' }
 }
 
