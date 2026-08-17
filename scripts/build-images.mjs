@@ -19,7 +19,7 @@ const OUT = path.join(root, 'public', 'images')
 const SOURCES = [
   { file: '01-hero.png', name: 'hero-stack', widths: [640, 960, 1280] },
   { file: '02-imitation.png', name: 'imitation-brusa', widths: [640, 960, 1280] },
-  { file: '14-planken.png', name: 'planken', widths: [640, 960, 1280] },
+  { file: '20-planken-a.png', name: 'planken', widths: [640, 960, 1280] },
   { file: '12-equipment.png', name: 'equipment', widths: [640, 960, 1280] },
   { file: '13-packs-branded.png', name: 'packs', widths: [640, 960] },
   { file: '11-workshop.png', name: 'workshop', widths: [640, 960] },

@@ -48,7 +48,7 @@ export function Hero() {
             </ul>
 
             <p className="mt-3 text-[0.82rem] text-ink-soft">
-              Сорт АБ, цена 2026 года. Калиброванная и другая строганая продукция — по запросу.
+              Цена 2026 года. Калиброванная и другая строганая продукция — по запросу.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

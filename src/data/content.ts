@@ -69,7 +69,7 @@ export const navItems: NavItem[] = [
 /* ------------------------------------------------------------------ */
 
 export const heroConditions: string[] = [
-  '34 000 ₽/м³',
+  'Сорт АБ — 34 000 ₽/м³',
   'Заказ от 10 м³',
   'Без сорта C',
   'Только 6 м — можно',
@@ -141,8 +141,7 @@ export const products: Product[] = [
     price: pricing.main,
     priceNote: `${pricing.grade} · ${pricing.year} · партия ${pricing.minVolume}`,
     image: 'planken',
-    imageAlt:
-      'Доски клеёного планкена: слева прямой профиль кромки, справа косой профиль со скосом',
+    imageAlt: 'Стопка досок косого планкена: торцы срезаны под углом, кромка без профиля',
     featured: true,
   },
   {
@@ -281,8 +280,8 @@ export const gallery: GalleryItem[] = [
   },
   {
     image: 'planken',
-    alt: 'Профиль планкена: прямая и косая кромка на торцах досок',
-    caption: 'Профиль планкена',
+    alt: 'Косой планкен крупным планом: торцы досок срезаны под углом',
+    caption: 'Косой планкен',
   },
   {
     image: 'texture',
